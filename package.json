@@ -12,11 +12,12 @@
     "three": "^0.183.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.7.0",
+    "@tailwindcss/vite": "^4.2.2",
+    "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.2",
-    "vite": "^8.0.2"
+    "vite": "^5.4.11"
   },
   "name": "dc-chatbot",
   "version": "1.0.0",

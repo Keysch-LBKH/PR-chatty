@@ -40,10 +40,10 @@ function TerrainWireframe() {
   return (
     <mesh ref={meshRef} geometry={geometry} position={[0, -10, 0]}>
       <meshBasicMaterial 
-        color="#008080" 
+        color="#00A8A8" 
         wireframe={true} 
         transparent={true}
-        opacity={0.35}
+        opacity={0.4}
       />
     </mesh>
   );
