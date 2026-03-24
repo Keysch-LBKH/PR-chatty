@@ -8,7 +8,7 @@ export default function LBKHLiaison() {
   
   // Chat state
   const [messages, setMessages] = useState([
-    { role: 'system', text: 'Welcome to the LBKH Liaison. I am trained on the public Bonner Site environmental filings. Ask me about water usage, noise constraints, or economic impact.' }
+    { role: 'system', text: 'Welcome to the LBKH Project Liaison. I am trained on the public Bonner Site environmental filings. Ask me about water usage, noise constraints, or economic impact.' }
   ]);
   const [input, setInput] = useState('');
   const chatEndRef = useRef(null);
@@ -141,7 +141,7 @@ export default function LBKHLiaison() {
                 {sidebarOpen ? <PanelLeftClose className="w-5 h-5" /> : <PanelLeft className="w-5 h-5" />}
              </button>
              <h1 className="text-lg font-light tracking-tight text-white mt-0.5">
-                LBKH <span className="text-smokyTeal font-medium">Liaison</span>
+                LBKH Project <span className="text-smokyTeal font-medium">Liaison</span>
              </h1>
            </div>
            
@@ -216,7 +216,7 @@ export default function LBKHLiaison() {
                   </button>
                 </form>
                 <div className="text-center mt-2 text-[10px] text-gray-500">
-                    LBKH Liaison is in prototyping simulation mode. Responses are pre-coded for demonstration purposes only.
+                    LBKH Project Liaison is in prototyping simulation mode. Responses are pre-coded for demonstration purposes only.
                 </div>
             </div>
         </div>
