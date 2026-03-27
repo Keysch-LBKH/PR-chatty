@@ -426,7 +426,7 @@ export default function QuizFunnel() {
     setSubmitting(true);
     const meta = audienceMeta[audience] || audienceMeta[AUDIENCE.private];
     try {
-      await fetch('https://placeholder-webhook.lbkh.solutions/quiz', {
+      await fetch('https://services.leadconnectorhq.com/hooks/fkyVaCUPjbDUBzUopuLP/webhook-trigger/4f5119bb-d5f7-4383-87ed-9f24b8e9408e', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
