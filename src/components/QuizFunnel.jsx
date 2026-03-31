@@ -375,7 +375,8 @@ export default function QuizFunnel() {
   }, [stage]);
 
   const handleAnswer = (answerId, fitScore, answerAudience) => {
-    const q = questions[currentQ];
+    // When questions array is empty (landing stage), Q1 hasn't been added yet — use Q1 directly
+    const q = questions.length > 0 ? questions[currentQ] : Q1;
     const newAnswers = { ...answers, [q.id]: answerId };
     setAnswers(newAnswers);
 
