@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Database, MessageSquare, Users, ArrowRight } from 'lucide-react';
+import { Database, MessageSquare, Users, ArrowRight, Play, X } from 'lucide-react';
+
+const VIDEO_ID = 'g7l-EVG6S4Q';
 
 export default function IndustrialInfrastructure() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-carbon text-gray-100 flex flex-col relative overflow-hidden">
       {/* Background Glow */}
@@ -40,22 +44,86 @@ export default function IndustrialInfrastructure() {
           </div>
         </div>
 
-        <div className="glass-morphism p-10 rounded-2xl border border-cyanGlow/40 bg-smokyTeal/5 w-full flex flex-col items-center">
-          <h2 className="text-2xl font-medium text-white mb-2">Interact with the Liaison</h2>
-          <p className="text-gray-400 mb-8">See how private documentation translates into community outreach in our live demo.</p>
-          <div className="flex flex-col sm:flex-row gap-4 items-center">
-            <a href="https://lbkh-liason.pages.dev" target="_blank" rel="noreferrer" className="bg-cyanGlow hover:bg-smokyTeal text-carbon font-semibold px-8 py-3 rounded-lg transition-colors flex items-center gap-2 hover:scale-105 transform shadow-lg shadow-cyanGlow/20">
-              Launch Liaison Demo <ArrowRight className="w-4 h-4" />
-            </a>
+        {/* CTA Section — funnel: Watch Video → Quiz → Demo */}
+        <div className="glass-morphism p-10 rounded-2xl border border-cyanGlow/40 bg-smokyTeal/5 w-full flex flex-col items-center gap-6">
+          <h2 className="text-2xl font-medium text-white mb-0">See it before you decide.</h2>
+          <p className="text-gray-400 -mt-2">Watch the 90-second overview, then take the fit quiz to unlock the live demo.</p>
+
+          {/* Step 1 — Watch the Video (primary) */}
+          <button
+            onClick={() => setVideoOpen(true)}
+            className="flex items-center gap-3 px-10 py-4 rounded-xl font-bold text-base transition-all hover:scale-105 transform shadow-xl"
+            style={{ background: 'linear-gradient(135deg, #00e5cc, #00b8a9)', color: '#0a0a0a', boxShadow: '0 0 40px rgba(0,229,204,0.4)' }}
+          >
+            <div className="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center shrink-0">
+              <Play className="w-4 h-4 fill-current" />
+            </div>
+            Watch the Video
+          </button>
+
+          {/* Step 2 — Quiz (secondary, leads to demo) */}
+          <div className="flex flex-col items-center gap-1">
+            <p className="text-xs text-gray-600 uppercase tracking-widest">Then</p>
             <Link
               to="/quiz"
               className="border border-cyanGlow/40 hover:border-cyanGlow text-cyanGlow hover:bg-cyanGlow/10 font-semibold px-8 py-3 rounded-lg transition-colors flex items-center gap-2 hover:scale-105 transform"
             >
               Is LBKH Liaison a fit for my project? <ArrowRight className="w-4 h-4" />
             </Link>
+            <p className="text-xs text-gray-600 mt-1">7 questions · 3 min · unlocks the live demo</p>
           </div>
         </div>
       </main>
+
+      {/* Portrait Video Modal */}
+      {videoOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          style={{ backgroundColor: 'rgba(0,0,0,0.92)' }}
+          onClick={() => setVideoOpen(false)}
+        >
+          <div
+            className="relative rounded-2xl overflow-hidden flex flex-col"
+            style={{ width: '100%', maxWidth: '400px', boxShadow: '0 0 80px rgba(0,229,204,0.3)' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-4 py-2.5 shrink-0" style={{ background: 'rgba(0,229,204,0.08)', borderBottom: '1px solid rgba(0,229,204,0.2)' }}>
+              <div className="flex items-center gap-2">
+                <Play className="w-3 h-3 text-cyanGlow" />
+                <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">LBKH Liaison — 90 sec</span>
+              </div>
+              <button onClick={() => setVideoOpen(false)} className="text-gray-500 hover:text-white transition-colors">
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* 9:16 embed */}
+            <div className="relative w-full" style={{ paddingBottom: '177.78%' }}>
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
+                title="LBKH Liaison Overview"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+
+            {/* Post-video CTA → quiz */}
+            <div className="px-4 py-3 flex flex-col items-center gap-2 shrink-0" style={{ background: '#0a0a0a', borderTop: '1px solid rgba(0,229,204,0.15)' }}>
+              <p className="text-xs text-gray-500 uppercase tracking-widest text-center">Ready? Take the fit quiz to unlock the demo.</p>
+              <Link
+                to="/quiz"
+                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all hover:scale-105 transform"
+                style={{ background: 'linear-gradient(135deg, #00e5cc, #00b8a9)', color: '#0a0a0a', boxShadow: '0 0 20px rgba(0,229,204,0.3)' }}
+                onClick={() => setVideoOpen(false)}
+              >
+                Take the Fit Quiz <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

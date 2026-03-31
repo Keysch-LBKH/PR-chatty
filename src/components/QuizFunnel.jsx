@@ -581,6 +581,16 @@ export default function QuizFunnel() {
               {submitting ? 'Sending...' : isStrongFit ? meta.submitLabel.strong : meta.submitLabel.possible}
             </button>
             <p style={s.formDisclaimer}>No spam. No pressure. Just a real conversation.</p>
+            <div style={{ textAlign: 'center', marginTop: '4px' }}>
+              <a
+                href="https://lbkh-liason.pages.dev"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: 'rgba(255,255,255,0.25)', fontSize: '11px', letterSpacing: '0.05em', textDecoration: 'none', textTransform: 'uppercase', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1px' }}
+              >
+                Skip — go straight to the demo →
+              </a>
+            </div>
           </form>
         ) : (
           <div style={s.successMsg}>✓ Received — we'll be in touch within one business day.</div>
